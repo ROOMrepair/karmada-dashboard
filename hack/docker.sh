@@ -76,10 +76,9 @@ function build_cross_image() {
   docker buildx build --output=type="${output_type}" \
           --platform "${platforms}" \
           --build-arg BINARY="${target}" \
-          "${DOCKER_BUILD_ARGS}" \
           --tag "${image_name}" \
           --file "${REPO_ROOT}/cluster/images/${DOCKER_FILE}" \
-          "${REPO_ROOT}/_output/bin"
+          "${REPO_ROOT}/_output/bin/${platforms}"
   # sign_image "${image_name}"
   set +x
 }

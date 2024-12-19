@@ -6,7 +6,7 @@
   "scripts": {
     "dashboard:dev": "turbo dev --filter @karmada/dashboard",
     "demos:dev": "turbo dev --filter @karmada/demos",
-    "dashboard:build": "turbo build --filter @karmada/dashboard",
+    "dashboard:build": "turbo build --filter @karmada/dashboard --force",
     "prepare": "cd .. && husky install ui/.husky"
   },
   "engines": {
@@ -30,7 +30,8 @@
     "turbo": "^2.0.6"
   },
   "dependencies": {
-    "dayjs": "^1.11.11"
+    "dayjs": "^1.11.11",
+    "pnpm": "^9.1.2"
   },
   "packageManager": "pnpm@9.1.2",
   "pnpm": {
