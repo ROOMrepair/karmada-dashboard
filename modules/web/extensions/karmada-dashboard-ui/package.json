@@ -1,0 +1,12 @@
+{
+  "name": "karmada-dashboard-ui",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Hello karmada-dashboard-ui",
+  "homepage": "",
+  "author": "",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ]
+}

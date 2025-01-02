@@ -33,26 +33,18 @@ const LoginPage = () => {
       // todo use valid origin !
       // if (event.origin === "") {
       // }
-      // console.log("event origin ", event.origin);
-      // console.log("event data", event.data);
       if (!isCustomEventData(event.data)) return;
-      // console.log("message ",event.data);
       if (event.data.action === 'token') {
         const { payload } = event.data;
         if (payload && typeof payload === 'object' && typeof payload.token === 'string') {
           const token: string = payload.token;
           setAuthToken(token);
           setIsAutoLogin(true);
-          console.log("auto sign");
-          // setTimeout(() => {}, 300);
         }
       }
     }
 
     window.addEventListener('message', handleMessage);
-
-    // console.log("window opener ",window.opener);
-    // console.log("window parent ",window.parent);
 
     if(window.opener){
       (window.opener as Window).postMessage({ action: "windowReady" }, "*");
@@ -60,7 +52,6 @@ const LoginPage = () => {
       window.parent.postMessage({ action: "frameReady" }, "*");
     }
 
-    // window.parent.postMessage({action:"ready"},"*");
     return () => {
       window.removeEventListener('message', handleMessage);
     }
@@ -69,8 +60,6 @@ const LoginPage = () => {
   
   useEffect(() => {
     if (isAutoLogin && authToken) {
-      console.log("trigger auto sign");
-      // buttonRef.current?.click();
       const autoLogin = async () => {
         try {
           const ret = await Login(authToken);
@@ -120,7 +109,7 @@ const LoginPage = () => {
                     {
                       key: '1',
                       label: i18nInstance.t('11fa53ed08b11d4753c29bbc8c8fee64'),
-                      children: <code>if the token does not load automatically,you can copy from the previous page</code>,
+                      children: <code>todo</code>,
                     },
                   ]}
                 />
@@ -133,7 +122,6 @@ const LoginPage = () => {
             rows={6}
             value={authToken}
             onChange={(v) => {
-              // console.log(isAutoLogin);
               if (isAutoLogin) { setIsAutoLogin(false) };
               setAuthToken(v.target.value);
             }}
